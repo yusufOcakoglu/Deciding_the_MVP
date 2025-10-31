@@ -1,5 +1,5 @@
 # Deciding the MVP: A Data-Driven Analysis of NBA Normal Season MVP Winners
-*I am Yusuf Ocakoglu. I have been interested in NBA Basketball and I've been watching NBA match and player analysis videos(e.g. "Thinking Basketball" YouTube channel) for a long time. In NBA,every year, there has been a subject that all basketball experts cannot have a consensus on: To whom will The NBA Normal Season MVP Award be given? NBA and various websites proivde wide range of data concerning player,team and award data. These publicly available data had me thinking about working on it as my project subject.*
+*I am Yusuf Ocakoglu. I have been interested in NBA Basketball and I've been watching NBA match and player analysis videos(e.g.,"Thinking Basketball" YouTube channel) for a long time. In NBA,every year, there has been a subject that all basketball experts cannot have a consensus on: To whom will The NBA Normal Season MVP Award be given? NBA and various websites proivde wide range of data concerning player,team and award data. These publicly available data had me thinking about working on it as my project subject.*
 
 *Therefore, I have decided to choose a claim to investigate for my DSA 210 project: "What factors actually determine the NBA's Most Valuable Player?"*
 
@@ -27,7 +27,7 @@ ________________________________________
 **3.	Data Collection 2 (Target Variable):** *The "Awards" voting results table for each season.*
 https://www.basketball-reference.com/awards/mvp.html
 
-•	**Data Preparation Plan:** *I will then "enrich" the primary player data by merging it with the team success data and using the awards data to create my*
+•	**Data Preparation Plan:** *I will then enrich the primary player data by merging it with the team success data and using the MVP awards data, *
 
 ________________________________________
 # Questions I Plan to Address
@@ -56,5 +56,6 @@ ________________________________________
 # Limitations and Future Work:
   ## Limitations:
    *An expected limitation is to overlook the effect of narratives: Tweets about a player, comeback histories, public popularity of a player in a season has the potential to shift the votes one candidate to another among the MVP candidates.*
-
+  ## Future Work:
+   *Not to overlook the public opinion and narratives about players, data from Twitter, basketball news or articles can be retrieved through web scraping. For now, it would exceed the scope of the project goal and my programming skills.*
 
