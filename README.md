@@ -27,7 +27,7 @@ ________________________________________
 **3.	Data Collection 2 (Target Variable):** *The "Awards" voting results table for each season.*
 https://www.basketball-reference.com/awards/mvp.html
 
-•	**Data Preparation Plan:** *I will then enrich the primary player data by merging it with the team success data and using the MVP awards data, *
+•	**Data Preparation Plan:** *I will then enrich the primary player data by merging it with the team success data and using the MVP awards data. *
 
 ________________________________________
 # Questions I Plan to Address
