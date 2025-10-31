@@ -1,4 +1,4 @@
-# Deciding the MVP: A Data-Driven Analysis of NBA Player Value
+# Deciding the MVP: A Data-Driven Analysis of NBA Normal Season MVP Winners
 *I have decided to choose a claim to investigate for my DSA 210 project: "What factors actually determine the NBA's Most Valuable Player?"*
 
 
