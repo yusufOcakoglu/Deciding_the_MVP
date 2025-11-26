@@ -1,61 +1,60 @@
-# Deciding the MVP: A Data-Driven Analysis of NBA Normal Season MVP Winners
-*I am Yusuf Ocakoglu. I have been interested in NBA Basketball and I've been watching NBA match and player analysis videos(e.g.,"Thinking Basketball" YouTube channel) for a long time. In NBA,every year, there has been a subject that all basketball experts cannot have a consensus on: To whom will The NBA Normal Season MVP Award be given? NBA and various websites proivde wide range of data concerning player,team and award data. These publicly available data had me thinking about working on it as my project subject.*
+# Wallet vs. Identity: A Data-Driven Analysis of the Rise of Populism in Europe
+*I am Yusuf Ocakoglu. I have a keen interest in European politics and the socio-economic dynamics that shape the continent. Recently, Europe has been experiencing a significant political shift with the rise of far-right and populist parties (e.g., AfD in Germany, RN in France). While political commentators often debate whether this shift is driven by cultural anxiety (migration) or economic hardship (cost of living), there is rarely a data-backed consensus on which factor is the primary driver.*
 
-*Therefore, I have decided to choose a claim to investigate for my DSA 210 project: "What factors actually determine the NBA's Most Valuable Player?"*
+*Therefore, I have decided to chose a claim to investigate for my DSA 210 project: "Do specific economic pain points, like housing and food costs, predict the rise of populism better than migration numbers?"*
 
 
 
 # Hypothesis (My Claim)
-•	**Null Hypothesis:** *There is no statistically significant difference in predictive power between traditional statistics (like Points Per Game) and advanced metrics (like Win Shares) when identifying the MVP. Team success (win percentage) is also not a primary determining factor.*
+•	**Null Hypothesis:** *There is no statistically significant difference in predictive power between general macro-economic indicators (like GDP) or demographic factors (migration numbers) and specific cost-of-living metrics (Housing/Food prices) when predicting the rise of populist party votes.*
 
-•	**Alternative Hypothesis:** *Advanced metrics (e.g., Win Shares, PER) combined with team success (win percentage) are significantly stronger and more important predictors for the MVP award than traditional, high-volume stats (e.g., PPG) alone.*
+•	**Alternative Hypothesis:** *Specific "kitchen table" economic metrics—specifically Housing Cost Indices and Food Inflation—are significantly stronger predictors of populist party polling numbers than general migration statistics or broad GDP growth.*
 
 ________________________________________
 # Data Source and Collection Plan
-*To test my hypothesis, I will need to collect and combine several public datasets. As per the project guidelines, I will enrich a primary public dataset with other data.*
+*To test my hypothesis, I will need to collect and combine several public datasets. As per the project guidelines, I will enrich a primary public dataset with other data sources.*
 
-•	**Source:** *All data will be sourced from Basketball-Reference.com. Although all data will be sourced from same website, I will be dealing with three distinct dataset.*
+•	**Source:** *Data will be sourced from Politico.eu, Eurostat, and UNHCR/Eurostat Migration Databases. I will be dealing with three distinct datasets to create a unified time-series analysis.*
 
-•	**Collection Method:**  *I will perform web scraping using Python libraries. My plan is to write a script that iterates through approximately 30 NBA seasons (e.g., 1995-2025) and gathers the following three distinct data tables:*
+•	**Collection Method:**  *I will perform a hybrid of API usage and web scraping using Python libraries (eurostat). My plan is to aggregate data for key European countries (Germany, France, Italy) over the last 5-10 years.*
 
- **1.	Primary Data (Player Stats):** *The "Advanced" and "Per Game" statistics tables for all players for each season.*
- https://www.basketball-reference.com/players/
+ **1.	Primary Data (Target Variable):** *The "Poll of Polls" data for specific European countries. This tracks the daily/weekly voting intention for political parties.*
+ Source: Politico Europe (Scraping/JSON extraction).
  
- **2. Data Collection 1 (Team Success):** *The "Team Standings" table for each season to get team win-loss records.*
- https://www.basketball-reference.com/teams/
+ **2. Enrichment Data 1 (Economic Stressors):** *Harmonised Index of Consumer Prices (HICP) with a focus on specific sub-indices: Food and Housing/Utilities.*
+ Source: Eurostat API.
  
-**3.	Data Collection 2 (Target Variable):** *The "Awards" voting results table for each season.*
-https://www.basketball-reference.com/awards/mvp.html
+**3.	nrichment Data 2 (Demographics):** *Asylum applicant numbers and migration statistics.*
+ Source: Eurostat/UNHCR.
 
-•	**Data Preparation Plan:** *I will then enrich the primary player data by merging it with the team success data and using the MVP awards data. *
+•	**Data Preparation Plan:** *I will enrich the political polling data by merging it with the monthly economic and migration indices based on date and country codes. This will create a master dataframe suitable for time-series regression.*
 
 ________________________________________
 # Questions I Plan to Address
-•	*Does the data support the common narrative that team success is a "prerequisite" for winning MVP?*
+•	*Is the "Cost of Living" the real driver? Do spikes in the Housing Price Index correlate more strongly with populist polling surges than spikes in migration numbers?*
 
-•	*Has there been a shift over the decades? Are advanced metrics (like Win Shares) more correlated with winning MVP in the modern era than in the 1990s?*
+•	*s there a time lag? How long does it take for a jump in food inflation to reflect in political polling numbers? (e.g., does the reaction happen instantly or 3 months later?)*
 
-•	*Which specific metric (e.g., PER, Win Shares, PPG) holds the most statistical importance in predicting the winner?*
+•	*Does the "Economy" matter more than "Culture"? When comparing the feature importance of economic variables vs. demographic variables, which one holds more statistical weight in predicting the target variable?*
 
-•	*Can a model be trained on a pre-filtered list of "candidates" (e.g., All-Stars) to effectively predict the winner from that small group?*
 ________________________________________
 # Analysis Focus
 
-•	*My initial analysis will involve **Exploratory Data Analysis (EDA) and Hypothesis Testing**. Type of test to be conducted will be discussed.*
+•	*My initial analysis will involve Exploratory Data Analysis (EDA) to visualize the trends of inflation, migration, and political polling on the same timeline.*
 
-•	*I am planning to visualize the correlations between team wins, individual stats, and winning the award. Further analysis on the shift over the decades about metrics may be conducted.*
+•	*I plan to use correlation matrices and time-series visualization to identify potential "breaking points" where economic stress triggered political shifts.*
 ________________________________________
 # ML Modeling Plan
 
 •	**Objective:**
-*To build a binary classification model that predicts the probability of a player winning the MVP award based on their regular season performance statistic.*
+*To build a Multiple Regression Model (or a Time-Series Regressor) that predicts the polling percentage of a populist party based on the independent economic and social variables.*
 
 •	**Model:**
 *This step will be evaluated after some progress through the project.*
 
 # Limitations and Future Work:
   ## Limitations:
-   *An expected limitation is to overlook the effect of narratives: Tweets about a player, comeback histories, public popularity of a player in a season has the potential to shift the votes one candidate to another among the MVP candidates.*
+   *An expected limitation is the inability to quantify media narratives and political charisma. A sudden scandal involving a politician or a viral news story can shift votes regardless of the economic situation, which is difficult to capture in a purely numerical dataset.*
   ## Future Work:
-   *Not to overlook the public opinion and narratives about players, data from Twitter, basketball news or articles can be retrieved through web scraping. For now, it would exceed the scope of the project goal and my programming skills.*
+   *To address the missing "narrative" aspect, future work could involve scraping news headlines from major European outlets to perform Sentiment Analysis. This would allow the model to account for the "public mood" driven by media, not just raw economic numbers. For now, this exceeds the scope of the current project timeline.*
 
