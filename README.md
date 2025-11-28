@@ -1,5 +1,5 @@
 # Wallet vs. Identity: A Data-Driven Analysis of the Rise of Far Right in Europe
-*I am Yusuf Ocakoglu. I have a keen interest in European politics and I've been watching European politics videos  Recently, Europe has been experiencing a significant political shift with the rise of far-right and populist parties (e.g., AfD in Germany, RN in France). While political commentators often debate whether this shift is driven by cultural anxiety (migration) or economic hardship (cost of living), there is rarely a data-backed consensus on which factor is the primary driver.*
+*I am Yusuf Ocakoglu. I have a keen interest in European politics and I've been watching European politics videos frequently(e.g.49W Youtube Channel). Recently, Europe has been experiencing a significant political shift with the rise of far-right and populist parties (e.g., AfD in Germany, RN in France). While political commentators often debate whether this shift is driven by cultural anxiety (migration) or economic hardship (cost of living), there is rarely a data-backed consensus on which factor is the primary driver.*
 
 *Therefore, I have decided to chose a claim to investigate for my DSA 210 project: "Do specific economic pain points, like housing and food costs, predict the rise of far right parties better than migration numbers?"*
 
