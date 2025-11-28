@@ -24,7 +24,7 @@ ________________________________________
  **2. Enrichment Data 1 (Economic Stressors):** *Harmonised Index of Consumer Prices (HICP) with a focus on specific sub-indices: Food and Housing/Utilities.*
  Source: Eurostat API.
  
-**3.	nrichment Data 2 (Demographics):** *Asylum applicant numbers and migration statistics.*
+**3.	Enrichment Data 2 (Demographics):** *Asylum applicant numbers and migration statistics.*
  Source: Eurostat/UNHCR.
 
 •	**Data Preparation Plan:** *I will enrich the political polling data by merging it with the monthly economic and migration indices based on date and country codes. This will create a master dataframe suitable for time-series regression.*
