@@ -1,60 +1,58 @@
-# Wallet vs. Identity: A Data-Driven Analysis of the Rise of Far Right in Europe
-*I am Yusuf Ocakoglu. I have a keen interest in European politics and I've been watching European politics videos frequently(e.g.49W Youtube Channel). Recently, Europe has been experiencing a significant political shift with the rise of far-right and populist parties (e.g., AfD in Germany, RN in France). While political commentators often debate whether this shift is driven by cultural anxiety (migration) or economic hardship (cost of living), there is rarely a data-backed consensus on which factor is the primary driver.*
+# Wallet vs. Passion: A Data-Driven Analysis of the "Escapism" Effect in Turkish Football
 
-*Therefore, I have decided to chose a claim to investigate for my DSA 210 project: "Do specific economic pain points, like housing and food costs, predict the rise of far right parties better than migration numbers?"*
+I am **Yusuf Ocakoglu**. Living in Turkey, I witness the economic challenges, high inflation, and the rising cost of living firsthand every day. Normally, when the economy gets tough and money becomes tight, the first thing people cut from their budget is entertainment and luxury expenses.
 
+However, as a football fan, I have noticed something surprising: **Even though the economy is struggling and ticket prices are skyrocketing, football stadiums in Turkey are fuller than ever.** This observation goes against basic logic—why do people keep spending money on football when they are trying to save? This led me to the idea of **"Escapism"**—maybe people are flocking to stadiums not in spite of the crisis, but *because* of it, using football as a psychological escape.
 
+For my DSA 210 project, I want to test this observation with data: **Is football a luxury that people give up during crises, or is it a sanctuary that they cling to even more?**
 
-# Hypothesis (My Claim)
-•	**Null Hypothesis:** *There is no statistically significant difference in predictive power between general macro-economic indicators (like GDP) or demographic factors (migration numbers) and specific cost-of-living metrics (Housing/Food prices) when predicting the rise of populist party votes.*
+### Hypothesis (My Claim)
 
-•	**Alternative Hypothesis:** *Specific "kitchen table" economic metrics—specifically Housing Cost Indices and Food Inflation—are significantly stronger predictors of populist party polling numbers than general migration statistics or broad GDP growth.*
+* **Null Hypothesis ($H_0$):** There is a negative correlation between economic distress (High Inflation, High Unemployment) and stadium attendance. (i.e., As the economy gets worse, people stop going to matches to save money).
+* **Alternative Hypothesis ($H_1$):** Stadium attendance remains stable or even increases during economic downturns, supporting the "Escapism" theory. This suggests that for Turkish people, football is a psychological necessity rather than just entertainment.
 
-________________________________________
-# Data Source and Collection Plan
-*To test my hypothesis, I will need to collect and combine several public datasets. As per the project guidelines, I will enrich a primary public dataset with other data sources.*
+### Data Source and Collection Plan
 
-•	**Source:** *Data will be sourced from Politico.eu, Eurostat, and UNHCR/Eurostat Migration Databases. I will be dealing with three distinct datasets to create a unified time-series analysis.*
+To test this, I will combine football data with economic indicators covering the last **10 football seasons (2014-2024)**.
 
-•	**Collection Method:**  *I will perform a hybrid of API usage and web scraping using Python libraries (eurostat). My plan is to aggregate data for key European countries (Germany, France, Italy) over the last 5-10 years.*
+* **Source:** I will use **Transfermarkt** for football stats, **TÜİK (Turkish Statistical Institute)** for economic data, and internet archives for historical ticket prices.
+* **Collection Method:** I will use Python (BeautifulSoup) to scrape football data and download official economic datasets directly.
 
- **1.	Primary Data (Target Variable):** *The "Poll of Polls" data for specific European countries. This tracks the daily/weekly voting intention for political parties.*
- Source: Politico Europe (Scraping/JSON extraction).
- 
- **2. Enrichment Data 1 (Economic Stressors):** *Harmonised Index of Consumer Prices (HICP) with a focus on specific sub-indices: Food and Housing/Utilities.*
- Source: Eurostat API.
- 
-**3.	Enrichment Data 2 (Demographics):** *Asylum applicant numbers and migration statistics.*
- Source: Eurostat/UNHCR.
+**1. Primary Data (Target Variable): Süper Lig Attendance**
+* **What:** Average number of fans per game and stadium fill rates (%).
+* **Source:** Transfermarkt (Web Scraping).
 
-•	**Data Preparation Plan:** *I will enrich the political polling data by merging it with the monthly economic and migration indices based on date and country codes. This will create a master dataframe suitable for time-series regression.*
+**2. Enrichment Data 1 (Economic Stressors): The Economy**
+* **What:** Monthly Inflation Rate (CPI), USD/TRY Exchange Rate, and Unemployment Rate.
+* **Source:** TÜİK (TurkStat) and EVDS (Central Bank of Turkey).
 
-________________________________________
-# Questions I Plan to Address
-•	*Is the "Cost of Living" the real driver? Do spikes in the Housing Price Index correlate more strongly with populist polling surges than spikes in migration numbers?*
+**3. Enrichment Data 2 (Cost of Entry): Ticket Prices**
+* **What:** Historical Passolig card fees and minimum season ticket prices for major teams.
+* **Source:** Internet Archives (Wayback Machine) and News Search (Manual Entry).
 
-•	*s there a time lag? How long does it take for a jump in food inflation to reflect in political polling numbers? (e.g., does the reaction happen instantly or 3 months later?)*
+**Data Preparation:** I will merge the weekly/yearly match data with the monthly economic data to see how they interact over time.
 
-•	*Does the "Economy" matter more than "Culture"? When comparing the feature importance of economic variables vs. demographic variables, which one holds more statistical weight in predicting the target variable?*
+### Questions I Plan to Address
 
-________________________________________
-# Analysis Focus
+* **Is Football "Crisis-Proof"?** Does high inflation actually stop fans from going to the stadium?
+* **Is there a Delay?** If the Dollar/TL exchange rate spikes today, does the stadium attendance drop immediately, or does it take a few months to show?
+* **Big Teams vs. Others:** Is this "Escapism" effect valid only for big clubs (Galatasaray, Fenerbahçe, Beşiktaş) or does it apply to all teams?
+* **Purchasing Power:** How much harder has it become to buy a ticket compared to the minimum wage over the last 10 years?
 
-•	*My initial analysis will involve Exploratory Data Analysis (EDA) to visualize the trends of inflation, migration, and political polling on the same timeline.*
+### Analysis Focus
 
-•	*I plan to use correlation matrices and time-series visualization to identify potential "breaking points" where economic stress triggered political shifts.*
-________________________________________
-# ML Modeling Plan
+* I will start with **Exploratory Data Analysis (EDA)** to plot the "Economic Crisis" and "Stadium Fullness" on the same graph to see if they move together or in opposite directions.
+* I will use **Time-Series Visualizations** to spot specific moments (like the 2018 or 2021 currency shocks) and see how the fans reacted.
 
-•	**Objective:**
-*To build a Multiple Regression Model (or a Time-Series Regressor) that predicts the polling percentage of a populist party based on the independent economic and social variables.*
+### ML Modeling Plan
 
-•	**Model:**
-*This step will be evaluated after some progress through the project.*
+* **Objective:** To build a model that tries to predict the "Average Attendance" based on the economic situation of the country.
+* **Model:** I plan to use **Linear Regression** to see which economic factor (Inflation? Dollar? Unemployment?) has the biggest impact on whether people go to the match or not.
 
-# Limitations and Future Work:
-  ## Limitations:
-   *An expected limitation is the inability to quantify media narratives and political charisma. A sudden scandal involving a politician or a viral news story can shift votes regardless of the economic situation, which is difficult to capture in a purely numerical dataset.*
-  ## Future Work:
-   *To address the missing "narrative" aspect, future work could involve scraping news headlines from major European outlets to perform Sentiment Analysis. This would allow the model to account for the "public mood" driven by media, not just raw economic numbers. For now, this exceeds the scope of the current project timeline.*
+### Limitations and Future Work
 
+**Limitations:**
+It is hard to separate the "Economic Effect" from the "Team Success Effect." A team playing for the championship will always have a full stadium, regardless of the economy. My model might struggle to distinguish between a "rich fan" and a "passionate fan."
+
+**Future Work:**
+In the future, I could add a "Team Performance" score to the data to filter out the success factor. Also, analyzing social media (Twitter) sentiment during matches could help confirm if people are using football to vent their frustration.
