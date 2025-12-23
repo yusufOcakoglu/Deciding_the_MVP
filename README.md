@@ -1,58 +1,50 @@
-# Wallet vs. Passion: A Data-Driven Analysis of the "Escapism" Effect in Turkish Football
+# The Whistle of the Big Four: A Data-Driven Analysis of Referee Bias in Turkish Süper Lig
 
-I am **Yusuf Ocakoglu**. Living in Turkey, I witness the economic challenges, high inflation, and the rising cost of living firsthand every day. Normally, when the economy gets tough and money becomes tight, the first thing people cut from their budget is entertainment and luxury expenses.
+**Student:** Yusuf Ocakoglu  
+**Course:** DSA 210 - Introduction to Data Science
 
-However, as a football fan, I have noticed something surprising: **Even though the economy is struggling and ticket prices are skyrocketing, football stadiums in Turkey are fuller than ever.** This observation goes against basic logic—why do people keep spending money on football when they are trying to save? This led me to the idea of **"Escapism"**—maybe people are flocking to stadiums not in spite of the crisis, but *because* of it, using football as a psychological escape.
+## 1. Motivation
+I am Yusuf, and like many in Turkey, I am exposed to football discussions daily. However, I am frankly disturbed by how much the "referee decisions" and "favoritism" debates occupy our country's agenda. Instead of tactical analysis, hours of television and social media time are wasted on conspiracy theories about referees protecting big teams.
 
-For my DSA 210 project, I want to test this observation with data: **Is football a luxury that people give up during crises, or is it a sanctuary that they cling to even more?**
+This project is born out of a desire to cut through this noise. Instead of subjective arguments, I want to use data science to objectively analyze whether there is a statistical bias protecting the "Big Four" (Galatasaray, Fenerbahçe, Beşiktaş, Trabzonspor) compared to Anadolu teams. My goal is to see if the "protective hand" is a myth or a mathematical reality.
 
-### Hypothesis (My Claim)
+## 2. Hypothesis (The Claim)
 
-* **Null Hypothesis ($H_0$):** There is a negative correlation between economic distress (High Inflation, High Unemployment) and stadium attendance. (i.e., As the economy gets worse, people stop going to matches to save money).
-* **Alternative Hypothesis ($H_1$):** Stadium attendance remains stable or even increases during economic downturns, supporting the "Escapism" theory. This suggests that for Turkish people, football is a psychological necessity rather than just entertainment.
+* **Null Hypothesis ($H_0$):** There is no statistically significant difference in the disciplinary actions (cards per foul, penalty decisions) taken by referees against the "Big Four" teams versus other teams in the Turkish Süper Lig.
+* **Alternative Hypothesis ($H_1$):** The "Big Four" teams receive significantly more favorable treatment (e.g., lower card-to-foul ratios, higher penalty frequency) from referees compared to the rest of the league.
 
-### Data Source and Collection Plan
+## 3. Data Source and Collection Plan
+To insure a robust sample size for Machine Learning, I will analyze data from the **last 10 seasons (2014-2015 to 2023-2024)**.
 
-To test this, I will combine football data with economic indicators covering the last **10 football seasons (2014-2024)**.
+* **Primary Data (Match Stats):** I will use **football-data.co.uk** and **fbref.com** to obtain match-by-match statistics.
+    * *Features:* Date, Home Team, Away Team, Full Time Result, Fouls Committed (Home/Away), Yellow Cards (Home/Away), Red Cards (Home/Away).
+* **Enrichment Data (Referee & Team Categories):** 
+    * I will enrich the match data by scraping/adding a "Referee" column for each match (sourced from **TFF.org** or **Mackolik**).
+    * I will add a categorical feature identifying teams as "Big4" or "Anadolu".
+    * I will create a derived dataset of "Referee Profiles" to track individual referee behaviors over time.
 
-* **Source:** I will use **Transfermarkt** for football stats, **TÜİK (Turkish Statistical Institute)** for economic data, and internet archives for historical ticket prices.
-* **Collection Method:** I will use Python (BeautifulSoup) to scrape football data and download official economic datasets directly.
+## 4. Questions to Address
+1.  **The "Immunity" Factor:** Do Big Four teams commit more fouls per yellow card than Anadolu teams? (i.e., is their "tolerance limit" higher?)
+2.  **Referee Clustering:** Can we cluster referees into groups (e.g., "Strict", "Lenient", "Big-Team Friendly") based on their decision patterns?
+3.  **Home Advantage vs. Big Team Advantage:** Does playing at home affect the referee's decisions more if the home team is one of the Big Four?
 
-**1. Primary Data (Target Variable): Süper Lig Attendance**
-* **What:** Average number of fans per game and stadium fill rates (%).
-* **Source:** Transfermarkt (Web Scraping).
+## 5. Analysis & Machine Learning Plan
 
-**2. Enrichment Data 1 (Economic Stressors): The Economy**
-* **What:** Monthly Inflation Rate (CPI), USD/TRY Exchange Rate, and Unemployment Rate.
-* **Source:** TÜİK (TurkStat) and EVDS (Central Bank of Turkey).
+### Exploratory Data Analysis (EDA)
+* **Visualization:** I will use box plots and violin plots to compare the distribution of "Fouls per Card" ratios between Big 4 and other teams.
+* **Correlation:** Analyzing the correlation between "Team Market Value" (proxy for Big 4 status) and "Penalties Awarded".
 
-**3. Enrichment Data 2 (Cost of Entry): Ticket Prices**
-* **What:** Historical Passolig card fees and minimum season ticket prices for major teams.
-* **Source:** Internet Archives (Wayback Machine) and News Search (Manual Entry).
+### Machine Learning Model
+I plan to use **Unsupervised Learning** to uncover hidden patterns in referee behaviors.
 
-**Data Preparation:** I will merge the weekly/yearly match data with the monthly economic data to see how they interact over time.
+* **Algorithm:** K-Means Clustering.
+* **Goal:** To group referees based on their statistical tendencies (e.g., avg. cards shown, avg. fouls called, home bias ratio).
+* **Interpretation:** If a specific cluster is dominated by referees who statistically favor the Big Four, this will support the Alternative Hypothesis.
 
-### Questions I Plan to Address
-
-* **Is Football "Crisis-Proof"?** Does high inflation actually stop fans from going to the stadium?
-* **Is there a Delay?** If the Dollar/TL exchange rate spikes today, does the stadium attendance drop immediately, or does it take a few months to show?
-* **Big Teams vs. Others:** Is this "Escapism" effect valid only for big clubs (Galatasaray, Fenerbahçe, Beşiktaş) or does it apply to all teams?
-* **Purchasing Power:** How much harder has it become to buy a ticket compared to the minimum wage over the last 10 years?
-
-### Analysis Focus
-
-* I will start with **Exploratory Data Analysis (EDA)** to plot the "Economic Crisis" and "Stadium Fullness" on the same graph to see if they move together or in opposite directions.
-* I will use **Time-Series Visualizations** to spot specific moments (like the 2018 or 2021 currency shocks) and see how the fans reacted.
-
-### ML Modeling Plan
-
-* **Objective:** To build a model that tries to predict the "Average Attendance" based on the economic situation of the country.
-* **Model:** I plan to use **Linear Regression** to see which economic factor (Inflation? Dollar? Unemployment?) has the biggest impact on whether people go to the match or not.
-
-### Limitations and Future Work
-
-**Limitations:**
-It is hard to separate the "Economic Effect" from the "Team Success Effect." A team playing for the championship will always have a full stadium, regardless of the economy. My model might struggle to distinguish between a "rich fan" and a "passionate fan."
-
-**Future Work:**
-In the future, I could add a "Team Performance" score to the data to filter out the success factor. Also, analyzing social media (Twitter) sentiment during matches could help confirm if people are using football to vent their frustration.
+## 6. Tools
+* **Language:** Python
+* **Libraries:**
+    * `Pandas` for data manipulation and enrichment.
+    * `Matplotlib` / `Seaborn` for visualization.
+    * `Scikit-learn` for K-Means Clustering.
+    * `SciPy` for statistical hypothesis testing (T-tests).
