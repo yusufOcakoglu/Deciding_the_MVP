@@ -1,6 +1,6 @@
 # The Whistle of the Big Four: A Data-Driven Analysis of Referee Bias in Turkish Süper Lig
 
-**Student:** Yusuf Ocakoglu (ID: 34407)  
+**Student:** Yusuf Ocakoglu 
 **Course:** DSA 210 - Introduction to Data Science
 
 ---
