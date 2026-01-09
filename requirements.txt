@@ -1,0 +1,23 @@
+# Veri İşleme ve Analiz
+pandas
+numpy
+
+# Veri Kazıma (Scraping)
+beautifulsoup4
+requests
+lxml
+
+# Görselleştirme
+matplotlib
+seaborn
+
+# İstatistiksel Analizler (T-Test, Mann-Whitney, OLS, ANCOVA)
+scipy
+statsmodels
+
+# Makine Öğrenmesi (K-Means, Random Forest, Poisson)
+scikit-learn
+
+# Jupyter Notebook Ortamı
+ipykernel
+notebook
